@@ -1,0 +1,37 @@
+# Maintainer: xHitech <hitechapenas@gmail.com>
+pkgname=music-manga-bin
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Music, Manga & Audiobook Desktop Client for Jellyfin and Local Libraries (with embedded JRE 21)"
+arch=('x86_64')
+url="https://github.com/xHitech/music-manga-linux"
+license=('custom')
+depends=('mpv' 'libsecret')
+provides=('music-manga')
+conflicts=('music-manga')
+options=('!strip')
+source=("https://github.com/xHitech/music-manga-linux/releases/download/v${pkgver}/music-manga-${pkgver}-linux-x64.tar.gz")
+sha256sums=('1f5c945612c046ca963b0152750a9b879e8715bd14f3502e70be7d240f4a166c')
+
+package() {
+    install -dm755 "${pkgdir}/opt/music-manga"
+    install -dm755 "${pkgdir}/usr/bin"
+    install -dm755 "${pkgdir}/usr/share/applications"
+    install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
+
+    cp -a "${srcdir}/music-manga/"* "${pkgdir}/opt/music-manga/"
+    ln -sf "/opt/music-manga/bin/music-manga" "${pkgdir}/usr/bin/music-manga"
+    install -Dm644 "${srcdir}/music-manga/lib/music-manga.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/music-manga.png"
+
+    cat << 'EOF' > "${pkgdir}/usr/share/applications/music-manga.desktop"
+[Desktop Entry]
+Name=Music Manga
+Comment=Music, Manga & Audiobook Desktop Client for Jellyfin and Local Libraries
+Exec=/opt/music-manga/bin/music-manga
+Icon=music-manga
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;Player;Viewer;
+StartupWMClass=app-MainKt
+EOF
+}
