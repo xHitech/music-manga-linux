@@ -1,5 +1,7 @@
 # 📖🎵 Music Manga — Linux Desktop Releases
 
+**Versão atual: 0.1.0-7** — abertura automática da biblioteca musical, restauração pelo cache e novo acabamento visual.
+
 Cliente Desktop nativo para **Música Lossless/Opus**, **Leitura de Mangás em Alta Resolução** e **Audiobooks**, consumindo sua biblioteca pessoal no **Jellyfin** ou **pastas locais**.
 
 > **Nota:** Todos os pacotes Linux já vêm com o **Runtime Java 21 (JRE) embutido e otimizado** (`jlink`). Você **não** precisa instalar Java ou SDKs na sua máquina!
@@ -23,8 +25,8 @@ curl -fsSL https://raw.githubusercontent.com/xHitech/music-manga-linux/main/inst
 Baixe e instale o pacote `.deb` oficial da [última Release](https://github.com/xHitech/music-manga-linux/releases/latest):
 
 ```bash
-curl -fLO https://github.com/xHitech/music-manga-linux/releases/latest/download/music-manga_0.1.0-1_amd64.deb
-sudo apt update && sudo apt install -y ./music-manga_0.1.0-1_amd64.deb
+curl -fLO https://github.com/xHitech/music-manga-linux/releases/latest/download/music-manga_0.1.0-7_amd64.deb
+sudo apt update && sudo apt install -y ./music-manga_0.1.0-7_amd64.deb
 ```
 
 Depois é só abrir **Music Manga** pelo menu de aplicativos ou rodando `music-manga` no terminal.
@@ -43,7 +45,7 @@ makepkg -si
 #### Opção B: Instalação direta (Pacman + Tarball Portátil)
 ```bash
 sudo pacman -S --needed mpv libsecret
-curl -fL https://github.com/xHitech/music-manga-linux/releases/latest/download/music-manga-0.1.0-linux-x64.tar.gz | tar -xz
+curl -fL https://github.com/xHitech/music-manga-linux/releases/latest/download/music-manga-0.1.0-7-linux-x64.tar.gz | tar -xz
 ./music-manga/bin/music-manga
 ```
 
@@ -57,9 +59,9 @@ Funciona em qualquer distribuição Linux `x86_64` (Fedora, openSUSE, Arch, Debi
    - **Arch:** `sudo pacman -S mpv libsecret`
    - **Ubuntu/Debian:** `sudo apt install libmpv2 libsecret-1-0`
    - **Fedora:** `sudo dnf install mpv-libs libsecret`
-2. Baixe e extraia o arquivo [`music-manga-0.1.0-linux-x64.tar.gz`](https://github.com/xHitech/music-manga-linux/releases/latest):
+2. Baixe e extraia o arquivo [`music-manga-0.1.0-7-linux-x64.tar.gz`](https://github.com/xHitech/music-manga-linux/releases/latest):
    ```bash
-   tar -xzf music-manga-0.1.0-linux-x64.tar.gz
+   tar -xzf music-manga-0.1.0-7-linux-x64.tar.gz
    ./music-manga/bin/music-manga
    ```
 
@@ -96,9 +98,13 @@ Funciona em qualquer distribuição Linux `x86_64` (Fedora, openSUSE, Arch, Debi
 
 ---
 
-## 🔐 Checksums (SHA-256) — v0.1.0
+## 🔐 Checksums (SHA-256) — 0.1.0-7
 
-```text
-1f5c945612c046ca963b0152750a9b879e8715bd14f3502e70be7d240f4a166c  music-manga-0.1.0-linux-x64.tar.gz
-0d75e884cca8135ad8503b0dd4532992fd85c17952d3164bb8f3df31019548bd  music-manga_0.1.0-1_amd64.deb
+Os checksums dos três pacotes estão no arquivo `SHA256SUMS.txt` da [release 0.1.0-7](https://github.com/xHitech/music-manga-linux/releases/tag/v0.1.0-7).
+
+Para instalar o pacote Arch pronto:
+
+```bash
+curl -fLO https://github.com/xHitech/music-manga-linux/releases/download/v0.1.0-7/music-manga-bin-0.1.0-7-x86_64.pkg.tar.zst
+sudo pacman -U ./music-manga-bin-0.1.0-7-x86_64.pkg.tar.zst
 ```
