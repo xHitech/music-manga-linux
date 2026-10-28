@@ -10,7 +10,7 @@ depends=('mpv' 'libsecret')
 provides=('music-manga')
 conflicts=('music-manga')
 options=('!strip')
-source=("https://github.com/xHitech/music-manga-linux/releases/download/v${pkgver}/music-manga-${pkgver}-linux-x64.tar.gz")
+source=("${pkgname}-${pkgver}-${pkgrel}-linux-x64.tar.gz::https://github.com/xHitech/music-manga-linux/releases/download/v${pkgver}/music-manga-${pkgver}-linux-x64.tar.gz")
 sha256sums=('c53303d365877b47dc6c380839d2ef161eab52c0667a5ed1dcf56c826d3e4863')
 
 package() {
