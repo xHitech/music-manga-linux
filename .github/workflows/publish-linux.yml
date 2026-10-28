@@ -1,0 +1,34 @@
+name: Publish validated Linux 0.1.0-7 binaries
+on:
+  push:
+    branches: ['release/v0.1.0-7']
+    paths: ['.release/**', '.github/workflows/publish-linux.yml']
+permissions:
+  contents: write
+concurrency:
+  group: linux-release-0.1.0-7
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'xHitech/music-manga-linux'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout distribution files only
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Install packaging utilities
+        run: sudo apt-get update -qq && sudo apt-get install -y libarchive-tools zstd
+      - name: Reconstruct validated compiled app and package Linux assets
+        run: python3 .release/package.py
+      - name: Publish versioned binary release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: xHitech/music-manga-linux
+        run: |
+          gh release create v0.1.0-7 release-output/* \
+            --target "$GITHUB_SHA" \
+            --title 'Music Manga 0.1.0-7 — Biblioteca automática e novo visual' \
+            --notes-file .release/notes.txt \
+            --latest

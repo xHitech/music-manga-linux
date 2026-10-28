@@ -1,0 +1,10 @@
+Music Manga 0.1.0-7 — Linux x86_64
+
+- A biblioteca musical vinculada abre automaticamente usando os metadados salvos, antes da conexão.
+- A conexão atualiza o catálogo sem apagar a navegação; capas são solicitadas novamente após autenticar.
+- Banner roxo, cards com hover, sidebar refinada e player em formato de dock.
+- Correção do endereço de download do instalador Debian.
+
+Validação: 120 testes aprovados e mais 18 contra o JAR empacotado. Inicialização e layout verificados com servidor simulado. Compilação direta com Kotlin 2.3.21 e JDK 21; o Gradle foi bloqueado pelas restrições de sockets do ambiente de compilação.
+
+Distribuição contém apenas binários, runtime e arquivos de instalação. Código-fonte permanece no repositório privado. Não inclui bibliotecas pessoais, configurações, bancos de dados, senhas ou tokens do desenvolvedor.
