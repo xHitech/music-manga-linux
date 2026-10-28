@@ -1,7 +1,7 @@
 # Maintainer: xHitech <hitechapenas@gmail.com>
 pkgname=music-manga-bin
 pkgver=0.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Music, Manga & Audiobook Desktop Client for Jellyfin and Local Libraries (with embedded JRE 21)"
 arch=('x86_64')
 url="https://github.com/xHitech/music-manga-linux"
@@ -11,7 +11,7 @@ provides=('music-manga')
 conflicts=('music-manga')
 options=('!strip')
 source=("${pkgname}-${pkgver}-${pkgrel}-linux-x64.tar.gz::https://github.com/xHitech/music-manga-linux/releases/download/v${pkgver}/music-manga-${pkgver}-linux-x64.tar.gz")
-sha256sums=('ca0038d0eca010ccaa1e2edfa566f6ee27dc46dfb46ab688ea4b4fa51a77513e')
+sha256sums=('13a7928f6c557fff0819c8a057264a409531cb72f1376a593ccfc78ec23cfcd4')
 
 package() {
     install -dm755 "${pkgdir}/opt/music-manga"
