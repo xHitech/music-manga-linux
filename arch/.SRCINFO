@@ -1,16 +1,17 @@
 pkgbase = music-manga-bin
 	pkgdesc = Music, Manga & Audiobook Desktop Client for Jellyfin and Local Libraries (with embedded JRE 21)
 	pkgver = 0.1.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/xHitech/music-manga-linux
 	arch = x86_64
 	license = custom
 	depends = mpv
 	depends = libsecret
+	optdepends = org.freedesktop.secrets: manter a sessão Jellyfin no cofre do sistema
 	provides = music-manga
 	conflicts = music-manga
 	options = !strip
-	source = music-manga-bin-0.1.0-7-linux-x64.tar.gz::https://github.com/xHitech/music-manga-linux/releases/download/v0.1.0-7/music-manga-0.1.0-7-linux-x64.tar.gz
-	sha256sums = 718d63fbe2e10f4a03a18e63fdbb013e5171431bd8fa865c3a57d613fa5be6a0
+	source = music-manga-bin-0.1.0-8-linux-x64.tar.gz::https://github.com/xHitech/music-manga-linux/releases/download/v0.1.0-8/music-manga-0.1.0-8-linux-x64.tar.gz
+	sha256sums = c6716302eb84fdf00ecaddb310c80f32662978ca3676f8651338e7018056502c
 
 pkgname = music-manga-bin

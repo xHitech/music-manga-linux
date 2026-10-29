@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-VERSION="0.1.0-7"
+VERSION="0.1.0-8"
 REPO="xHitech/music-manga-linux"
 TAR_URL="https://github.com/${REPO}/releases/download/v${VERSION}/music-manga-${VERSION}-linux-x64.tar.gz"
 DEB_URL="https://github.com/${REPO}/releases/download/v${VERSION}/music-manga_${VERSION}_amd64.deb"
@@ -25,6 +25,7 @@ elif command -v apt-get >/dev/null 2>&1; then
     sudo apt-get install -y "$TMP_DEB"
     rm -f "$TMP_DEB"
     echo "[3/3] Instalação concluída! Procure por 'Music Manga' no menu de aplicativos ou digite: music-manga"
+    echo " -> Para manter o login, é necessário um cofre Secret Service disponível e desbloqueado (GNOME Keyring, KWallet ou compatível)."
     exit 0
 elif command -v dnf >/dev/null 2>&1; then
     echo "[1/3] Detectado Fedora / RHEL. Verificando dependências (mpv-libs, libsecret)..."
@@ -69,3 +70,5 @@ EOF
 echo "[3/3] Music Manga v${VERSION} instalado com sucesso!"
 echo " -> Abra pelo menu de aplicativos ('Music Manga') ou execute:"
 echo "    ${BIN_DIR}/music-manga"
+
+echo " -> Para manter o login, é necessário um cofre Secret Service disponível e desbloqueado (GNOME Keyring, KWallet ou compatível)."

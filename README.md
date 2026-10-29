@@ -1,6 +1,6 @@
 # 📖🎵 Music Manga — Linux Desktop Releases
 
-**Versão atual: 0.1.0-7** — abertura automática da biblioteca musical, restauração pelo cache e novo acabamento visual.
+**Versão atual: 0.1.0-8** — correção da opção de manter login, nova verificação do cofre seguro e avisos de restauração visíveis.
 
 Cliente Desktop nativo para **Música Lossless/Opus**, **Leitura de Mangás em Alta Resolução** e **Audiobooks**, consumindo sua biblioteca pessoal no **Jellyfin** ou **pastas locais**.
 
@@ -25,8 +25,8 @@ curl -fsSL https://raw.githubusercontent.com/xHitech/music-manga-linux/main/inst
 Baixe e instale o pacote `.deb` oficial da [última Release](https://github.com/xHitech/music-manga-linux/releases/latest):
 
 ```bash
-curl -fLO https://github.com/xHitech/music-manga-linux/releases/latest/download/music-manga_0.1.0-7_amd64.deb
-sudo apt update && sudo apt install -y ./music-manga_0.1.0-7_amd64.deb
+curl -fLO https://github.com/xHitech/music-manga-linux/releases/latest/download/music-manga_0.1.0-8_amd64.deb
+sudo apt update && sudo apt install -y ./music-manga_0.1.0-8_amd64.deb
 ```
 
 Depois é só abrir **Music Manga** pelo menu de aplicativos ou rodando `music-manga` no terminal.
@@ -45,7 +45,7 @@ makepkg -si
 #### Opção B: Instalação direta (Pacman + Tarball Portátil)
 ```bash
 sudo pacman -S --needed mpv libsecret
-curl -fL https://github.com/xHitech/music-manga-linux/releases/latest/download/music-manga-0.1.0-7-linux-x64.tar.gz | tar -xz
+curl -fL https://github.com/xHitech/music-manga-linux/releases/latest/download/music-manga-0.1.0-8-linux-x64.tar.gz | tar -xz
 ./music-manga/bin/music-manga
 ```
 
@@ -59,9 +59,9 @@ Funciona em qualquer distribuição Linux `x86_64` (Fedora, openSUSE, Arch, Debi
    - **Arch:** `sudo pacman -S mpv libsecret`
    - **Ubuntu/Debian:** `sudo apt install libmpv2 libsecret-1-0`
    - **Fedora:** `sudo dnf install mpv-libs libsecret`
-2. Baixe e extraia o arquivo [`music-manga-0.1.0-7-linux-x64.tar.gz`](https://github.com/xHitech/music-manga-linux/releases/latest):
+2. Baixe e extraia o arquivo [`music-manga-0.1.0-8-linux-x64.tar.gz`](https://github.com/xHitech/music-manga-linux/releases/latest):
    ```bash
-   tar -xzf music-manga-0.1.0-7-linux-x64.tar.gz
+   tar -xzf music-manga-0.1.0-8-linux-x64.tar.gz
    ./music-manga/bin/music-manga
    ```
 
@@ -98,13 +98,28 @@ Funciona em qualquer distribuição Linux `x86_64` (Fedora, openSUSE, Arch, Debi
 
 ---
 
-## 🔐 Checksums (SHA-256) — 0.1.0-7
+## 🔐 Checksums (SHA-256) — 0.1.0-8
 
-Os checksums dos três pacotes estão no arquivo `SHA256SUMS.txt` da [release 0.1.0-7](https://github.com/xHitech/music-manga-linux/releases/tag/v0.1.0-7).
+Os checksums dos três pacotes estão no arquivo `SHA256SUMS.txt` da [release 0.1.0-8](https://github.com/xHitech/music-manga-linux/releases/tag/v0.1.0-8).
 
 Para instalar o pacote Arch pronto:
 
 ```bash
-curl -fLO https://github.com/xHitech/music-manga-linux/releases/download/v0.1.0-7/music-manga-bin-0.1.0-7-x86_64.pkg.tar.zst
-sudo pacman -U ./music-manga-bin-0.1.0-7-x86_64.pkg.tar.zst
+curl -fLO https://github.com/xHitech/music-manga-linux/releases/download/v0.1.0-8/music-manga-bin-0.1.0-8-x86_64.pkg.tar.zst
+sudo pacman -U ./music-manga-bin-0.1.0-8-x86_64.pkg.tar.zst
+```
+
+## Manter o login ao fechar o app
+
+Marque **Manter sessão neste aparelho** na tela de login. O app salva somente o token, no cofre de credenciais do sistema, e valida a sessão ao reabrir. A senha não é salva.
+
+No Linux, instalar libsecret não instala necessariamente o serviço que guarda os segredos. É necessário um provedor de **Secret Service** disponível e desbloqueado, como GNOME Keyring, KWallet ou KeePassXC configurado. Sem ele, o app informa que a sessão será apenas temporária.
+
+Referências: [libsecret no Arch](https://archlinux.org/packages/core/x86_64/libsecret/) e [GNOME Keyring na ArchWiki](https://wiki.archlinux.org/title/GNOME/Keyring).
+
+Para verificar o serviço sem consultar seus tokens:
+
+```bash
+command -v secret-tool
+gdbus call --session --dest org.freedesktop.secrets --object-path /org/freedesktop/secrets --method org.freedesktop.DBus.Peer.Ping
 ```
