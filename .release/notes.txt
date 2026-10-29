@@ -1,0 +1,13 @@
+Music Manga 0.1.0-8 — Persistência de sessão
+
+- Restaura a opção Manter sessão neste aparelho na tela de login.
+- Verifica novamente o cofre seguro ao entrar, inclusive quando ele não estava pronto na inicialização.
+- Exibe avisos de gravação e restauração de sessão na biblioteca, além da tela de login.
+- Oferece nova tentativa de restauração após falha temporária sem solicitar outra senha.
+- Não imprime detalhes de exceções de armazenamento nos logs.
+
+130 testes aprovados, incluindo fechamento/reabertura, cofre disponível tardiamente, persistência opcional e avisos na interface real. Testes usam cofre e servidor simulados.
+
+O token continua exclusivamente no armazenamento seguro do sistema; não há armazenamento de senha ou fallback em texto puro. No Linux é necessário um serviço Secret Service disponível e desbloqueado (GNOME Keyring, KWallet ou outro compatível). A atualização do app não instala nem desbloqueia o cofre pessoal.
+
+Código-fonte permanece privado; esta release contém somente binários, runtime e arquivos de instalação.
