@@ -91,3 +91,8 @@ Os downloads e checksums SHA-256 estão na [página de versões](https://github.
 ---
 
 English version: [README.en.md](README.en.md).
+
+
+---
+
+For the English guide, see [README.en.md](README.en.md).
