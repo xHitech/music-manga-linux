@@ -4,6 +4,10 @@
 
 Listen to your music, read manga, and pick up your audiobooks on Linux, using your Jellyfin libraries and local files.
 
+<p align="center">
+  <img src="screenshots/music-library.png" alt="Music Manga Interface" width="100%" />
+</p>
+
 The Linux releases include a Java 21 runtime. You do not need to install Java separately.
 
 ## Downloads
