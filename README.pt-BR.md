@@ -1,6 +1,6 @@
-# Music Manga para Linux
+[English](README.md) | [Português (Brasil)](README.pt-BR.md)
 
-[English](README.md) | **Português (Brasil)**
+# Music Manga para Linux
 
 O Music Manga é um aplicativo para Linux que reúne reprodução de músicas, leitura de mangás e audiobooks. Ele acessa bibliotecas pessoais do Jellyfin e arquivos locais.
 
