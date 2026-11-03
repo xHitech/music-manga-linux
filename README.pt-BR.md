@@ -2,6 +2,15 @@
 
 # Music Manga para Linux
 
+<p align="left">
+  <a href="https://github.com/xHitech/music-manga-linux/releases/latest"><img src="https://img.shields.io/github/v/release/xHitech/music-manga-linux?logo=github&color=7C3AED" alt="Versão Mais Recente"></a>
+  <a href="https://kotlinlang.org"><img src="https://img.shields.io/badge/Kotlin-2.1+-7F52FF?logo=kotlin&logoColor=white" alt="Kotlin"></a>
+  <a href="https://www.jetbrains.com/lp/compose-multiplatform/"><img src="https://img.shields.io/badge/UI-Compose_Multiplatform-4285F4?logo=jetpackcompose&logoColor=white" alt="Compose Multiplatform"></a>
+  <a href="https://github.com/xHitech/music-manga-linux/releases"><img src="https://img.shields.io/badge/Plataforma-Linux-FCC624?logo=linux&logoColor=black" alt="Linux"></a>
+  <a href="https://mpv.io"><img src="https://img.shields.io/badge/Áudio-libmpv-8C1515" alt="libmpv"></a>
+  <a href="https://jellyfin.org"><img src="https://img.shields.io/badge/Jellyfin-10.8+-00A4DC?logo=jellyfin&logoColor=white" alt="Jellyfin"></a>
+</p>
+
 Ouça suas músicas, leia mangás e continue seus audiobooks no Linux, com suas bibliotecas do Jellyfin e arquivos locais.
 
 <p align="center">
