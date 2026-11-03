@@ -1,125 +1,86 @@
-# 📖🎵 Music Manga — Linux Desktop Releases
+# Music Manga for Linux
 
-**Versão atual: 0.1.0-8** — correção da opção de manter login, nova verificação do cofre seguro e avisos de restauração visíveis.
+Music Manga is a desktop client for your personal Jellyfin server and local media libraries. It combines music playback, manga reading, and audiobook support in one Linux application.
 
-Cliente Desktop nativo para **Música Lossless/Opus**, **Leitura de Mangás em Alta Resolução** e **Audiobooks**, consumindo sua biblioteca pessoal no **Jellyfin** ou **pastas locais**.
+The Linux releases include a Java 21 runtime. You do not need to install Java separately.
 
-> **Nota:** Todos os pacotes Linux já vêm com o **Runtime Java 21 (JRE) embutido e otimizado** (`jlink`). Você **não** precisa instalar Java ou SDKs na sua máquina!
+## Install
 
----
+Download the package for your distribution from [the latest release](https://github.com/xHitech/music-manga-linux/releases/latest).
 
-## 🚀 Instalação Rápida (1 comando — Qualquer Distro)
+### Debian, Ubuntu, Linux Mint, Pop!_OS, and Zorin
 
-Rode no terminal para instalar automaticamente as dependências de áudio (`libmpv`) e o aplicativo:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/xHitech/music-manga-linux/main/install.sh | bash
-```
-
----
-
-## 📦 Instalação por Distro
-
-### 🐧 Ubuntu / Debian / Linux Mint / Pop!_OS / Zorin (`.deb`)
-
-Baixe e instale o pacote `.deb` oficial da [última Release](https://github.com/xHitech/music-manga-linux/releases/latest):
+Download the `.deb` package from the latest release, then install it:
 
 ```bash
-curl -fLO https://github.com/xHitech/music-manga-linux/releases/latest/download/music-manga_0.1.0-8_amd64.deb
-sudo apt update && sudo apt install -y ./music-manga_0.1.0-8_amd64.deb
+sudo apt install ./music-manga_VERSION_amd64.deb
 ```
 
-Depois é só abrir **Music Manga** pelo menu de aplicativos ou rodando `music-manga` no terminal.
+Replace the filename with the one you downloaded. You can also use your file manager to open and install the package.
 
----
+### Arch Linux, Manjaro, EndeavourOS, and CachyOS
 
-### 🏹 Arch Linux / Manjaro / EndeavourOS / CachyOS (`PKGBUILD` ou Portátil)
+To build and install the package from the repository:
 
-#### Opção A: Via `makepkg` (`PKGBUILD`)
 ```bash
 git clone https://github.com/xHitech/music-manga-linux.git
 cd music-manga-linux/arch
 makepkg -si
 ```
 
-#### Opção B: Instalação direta (Pacman + Tarball Portátil)
+Alternatively, download the prebuilt Arch package from the latest release and install it with:
+
 ```bash
-sudo pacman -S --needed mpv libsecret
-curl -fL https://github.com/xHitech/music-manga-linux/releases/latest/download/music-manga-0.1.0-8-linux-x64.tar.gz | tar -xz
+sudo pacman -U ./music-manga-bin-VERSION-x86_64.pkg.tar.zst
+```
+
+### Other Linux distributions
+
+Download the portable `.tar.gz` archive from the latest release and extract it:
+
+```bash
+tar -xzf music-manga-VERSION-linux-x64.tar.gz
 ./music-manga/bin/music-manga
 ```
 
----
+The portable archive requires the system audio library `libmpv`. Install it using your distribution's package manager if the application cannot find it. Common package names include `mpv` on Arch, `libmpv2` on Debian or Ubuntu, and `mpv-libs` on Fedora. The `libsecret` library and a Secret Service provider are needed to save a Jellyfin session between launches.
 
-### 📁 Versão Portátil Universal (`.tar.gz`)
+## First launch
 
-Funciona em qualquer distribuição Linux `x86_64` (Fedora, openSUSE, Arch, Debian, Ubuntu, Void, NixOS, etc.).
+1. Open Music Manga from your desktop application menu, or run `music-manga` in a terminal.
+2. Enter your Jellyfin server address and account details.
+3. Select the libraries you want to use.
 
-1. Certifique-se de ter a `libmpv` instalada no sistema:
-   - **Arch:** `sudo pacman -S mpv libsecret`
-   - **Ubuntu/Debian:** `sudo apt install libmpv2 libsecret-1-0`
-   - **Fedora:** `sudo dnf install mpv-libs libsecret`
-2. Baixe e extraia o arquivo [`music-manga-0.1.0-8-linux-x64.tar.gz`](https://github.com/xHitech/music-manga-linux/releases/latest):
-   ```bash
-   tar -xzf music-manga-0.1.0-8-linux-x64.tar.gz
-   ./music-manga/bin/music-manga
-   ```
+You can also browse supported local media. For manga, the reader supports CBZ and ZIP archives and folders of images.
 
----
+To keep your Jellyfin session after closing the app, select **Keep session on this device** on the login screen. The application stores the session token in the system credential store; it does not save your password. A Secret Service provider, such as GNOME Keyring or KWallet, must be installed and unlocked. Without one, the session is temporary.
 
-## ✨ Principais Recursos (v0.1.0 — Manga Reader Premium 3D)
+## Features
 
-### 📖 Leitor de Mangá Premium
-- **Fontes:** Bibliotecas locais (`.cbz`, `.zip` ou pastas de imagens) e bibliotecas remotas do **Jellyfin** (streaming direto de páginas dentro de arquivos `.cbz` via HTTP Range sem precisar baixar o volume inteiro antes!).
-- **Renderização Adaptativa por Tiles (3B):** Zoom fluido de até 5x com decodificação regional sob demanda em alta resolução (512×512 tiles) e orçamento estrito de memória RAM.
-- **Modos de Leitura (3A):** Página Simples, Página Dupla Inteligente (detecta páginas duplas/spreads largos automaticamente e isola a capa) e Rolagem Vertical Contínua (Webtoon), em sentido Oriental (Direita → Esquerda) ou Ocidental (Esquerda → Direita).
-- **Laboratório de Imagem (3C/3D):** Ajustes em tempo real de **Contraste, Brilho, Saturação (Rec. 709), Ganho RGB e Curva Gamma (LUT)**, além de presets prontos (*Original, P&B Alto Contraste, P&B Suave, Leitura Noturna*) e botão **"Segure para Comparar"** (ou segure a tecla `C` / `O`).
-- **Atalhos de Teclado:**
-  - `Setas` / `A` / `D` / `PageUp` / `PageDown` / `Scroll`: Navegar páginas
-  - `Z` ou Duplo Clique: Alternar Zoom 2.5x
-  - `Ctrl + Scroll` ou `+`: Zoom progressivo no cursor
-  - `R` ou `0`: Resetar Zoom
-  - `C` ou `O` (segurar): Comparar com imagem original sem filtros
-  - `Esc`: Voltar
+### Music
 
-### 🎵 Player de Música & Espectro Real
-- **Integração Nativa `libmpv` (JNA):** Reprodução direta sem processos externos, com suporte a **Direct Play (FLAC Hi-Res / Original)** e transcoding **Opus (320 / 192 / 128 kbps)** no Jellyfin.
-- **Analisador de Espectro em Memória:** Espectro de frequências real extraído diretamente do PCM em reprodução (`showfreqs` + `fscale=log`).
-- **Telemetria de Stream:** Taxa de leitura de rede em tempo real, histórico dos últimos 30s e estimativa de consumo por hora.
-- **Letras Sincronizadas (`.lrc`):** Destaque linha a linha sincronizado com o tempo da faixa.
+- Stream music from Jellyfin, including direct playback when supported by the server.
+- Choose Opus transcoding quality when transcoding is needed.
+- View synchronized LRC lyrics.
+- See a live audio spectrum and network stream information.
 
-### 🎧 Audiobooks
-- Suporte a Audiobooks locais e remotos via Jellyfin com capítulos, retomada automática da posição exata onde parou e sincronização de sessão.
+### Manga
 
-### 🔒 Segurança e Privacidade
-- **Credenciais no Keyring do Sistema:** O token de sessão do Jellyfin é salvo exclusivamente via `secret-tool` (GNOME Keyring / KWallet / Secret Service) — nunca em texto puro.
-- **Zero Telemetria Externa:** Nenhum dado, log ou estatística sai da sua máquina.
-- **Proteção de Rede:** Bloqueio automático de redirecionamentos HTTP (`max_redirects=0`) para impedir vazamento de headers de autenticação.
+- Read local CBZ and ZIP archives, image folders, and supported manga libraries on Jellyfin.
+- Open pages from remote CBZ archives without downloading the entire volume first.
+- Use single-page, double-page, and continuous vertical reading modes.
+- Read from right to left or left to right.
+- Zoom and adjust image appearance while reading.
 
----
+### Audiobooks
 
-## 🔐 Checksums (SHA-256) — 0.1.0-8
+- Play local or Jellyfin audiobooks.
+- Navigate chapters and resume from the previous playback position.
 
-Os checksums dos três pacotes estão no arquivo `SHA256SUMS.txt` da [release 0.1.0-8](https://github.com/xHitech/music-manga-linux/releases/tag/v0.1.0-8).
+## Privacy
 
-Para instalar o pacote Arch pronto:
+Music Manga does not send usage analytics or telemetry to external services. Jellyfin credentials are handled through the system credential store when session persistence is enabled.
 
-```bash
-curl -fLO https://github.com/xHitech/music-manga-linux/releases/download/v0.1.0-8/music-manga-bin-0.1.0-8-x86_64.pkg.tar.zst
-sudo pacman -U ./music-manga-bin-0.1.0-8-x86_64.pkg.tar.zst
-```
+## Releases and checksums
 
-## Manter o login ao fechar o app
-
-Marque **Manter sessão neste aparelho** na tela de login. O app salva somente o token, no cofre de credenciais do sistema, e valida a sessão ao reabrir. A senha não é salva.
-
-No Linux, instalar libsecret não instala necessariamente o serviço que guarda os segredos. É necessário um provedor de **Secret Service** disponível e desbloqueado, como GNOME Keyring, KWallet ou KeePassXC configurado. Sem ele, o app informa que a sessão será apenas temporária.
-
-Referências: [libsecret no Arch](https://archlinux.org/packages/core/x86_64/libsecret/) e [GNOME Keyring na ArchWiki](https://wiki.archlinux.org/title/GNOME/Keyring).
-
-Para verificar o serviço sem consultar seus tokens:
-
-```bash
-command -v secret-tool
-gdbus call --session --dest org.freedesktop.secrets --object-path /org/freedesktop/secrets --method org.freedesktop.DBus.Peer.Ping
-```
+Downloads and SHA-256 checksums are available on the [releases page](https://github.com/xHitech/music-manga-linux/releases). Check the release notes for version-specific changes and installation requirements.
